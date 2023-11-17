@@ -3,9 +3,9 @@ import { surveysController } from '../controller/surveys';
 
 const surveysRouter = express.Router();
 
-surveysRouter.get('/', surveysController.getSurveys);
-surveysRouter.post('/', surveysController.createSurvey);
-surveysRouter.put('/', surveysController.updateSurvey);
-surveysRouter.delete('/', surveysController.deleteSurvey);
+surveysRouter.get('/', surveysController.get);
+surveysRouter.post('/', surveysController.create);
+surveysRouter.put('/:id', surveysController.update);
+surveysRouter.delete('/:id', surveysController.delete);
 
 export { surveysRouter };
