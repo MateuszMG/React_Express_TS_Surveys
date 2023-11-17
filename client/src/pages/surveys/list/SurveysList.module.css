@@ -1,0 +1,37 @@
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 16px;
+  padding: 8px;
+}
+
+.section h2 {
+  color: green;
+}
+
+.section:nth-child(odd) h2 {
+  color: red;
+}
+
+.iconsWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+
+.iconsWrapper > * {
+  font-size: 30px;
+}
