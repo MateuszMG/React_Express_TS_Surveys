@@ -9,5 +9,5 @@ export const surveyApi = {
   updateSurvey: (id: string, data: UpsertSurveySchema) =>
     axios.put(`/surveys/${id}`, data),
 
-  deleteSurvey: (id: string) => axios.delete(`/surveys/${id}}`),
+  deleteSurvey: (id: string) => axios.delete(`/surveys/${id}`),
 };
