@@ -1,4 +1,5 @@
 import { surveyApi } from '../../../../api/surveysApi';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -28,6 +29,13 @@ export const useUpsertSurveyModal = ({
 
     return data;
   });
+
+  useEffect(() => {
+    if (!editedSurvey) return;
+
+    const { id, ...rest } = editedSurvey;
+    reset(rest);
+  }, []);
 
   return {
     errors,
