@@ -1,9 +1,5 @@
+import { Surveys } from './pages/surveys/Surveys';
+
 export const App = () => {
-  return (
-    <div>
-      <p> App </p>
-      <p> App </p>
-      <p> App </p>
-    </div>
-  );
+  return <Surveys />;
 };

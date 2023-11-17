@@ -1,11 +1,13 @@
 import { axios } from './axios';
+import { UpsertSurveySchema } from '../pages/surveys/modals/UpsertSurveyModal/useUpsertSurveyModal';
 
 export const surveyApi = {
   getSurveys: () => axios.get('/surveys'),
 
-  createSurvey: (data: Omit<Survey, 'id'>) => axios.post('/surveys', data),
+  createSurvey: (data: UpsertSurveySchema) => axios.post('/surveys', data),
 
-  updateSurvey: (id: string) => axios.put(`/surveys/${id}`),
+  updateSurvey: (id: string, data: UpsertSurveySchema) =>
+    axios.put(`/surveys/${id}`, data),
 
   deleteSurvey: (id: string) => axios.delete(`/surveys/${id}}`),
 };

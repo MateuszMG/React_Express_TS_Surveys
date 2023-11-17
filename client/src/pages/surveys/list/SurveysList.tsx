@@ -1,10 +1,17 @@
 import { Button } from '../../../components/global/Button/Button';
+import { DeleteIcon, UpdateIcon } from '../../../components/icons/Icons';
 import { useSurveysList } from './useSurveysList';
 import styles from './SurveysList.module.css';
 
-interface SurveysListProps {}
+interface SurveysListProps {
+  handleOpenDeleteSurveyModal: (survey: Survey) => void;
+  handleOpenUpsertSurveyModal: (survey: Survey) => void;
+}
 
-export const SurveysList = ({}: SurveysListProps) => {
+export const SurveysList = ({
+  handleOpenDeleteSurveyModal,
+  handleOpenUpsertSurveyModal,
+}: SurveysListProps) => {
   const { getSurveys, surveys } = useSurveysList();
 
   return (
@@ -24,6 +31,11 @@ export const SurveysList = ({}: SurveysListProps) => {
               <p>Favourite color : {survey.favouriteColor}</p>
               <p>Hight : {survey.hight}</p>
               <p>Sex : {survey.sex}</p>
+            </div>
+
+            <div className={styles.iconsWrapper}>
+              <UpdateIcon onClick={() => handleOpenUpsertSurveyModal(survey)} />
+              <DeleteIcon onClick={() => handleOpenDeleteSurveyModal(survey)} />
             </div>
           </section>
         ))}
