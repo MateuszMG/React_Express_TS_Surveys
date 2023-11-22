@@ -6,3 +6,7 @@
   text-indent: 4px;
   width: 100%;
 }
+
+.input:hover::placeholder {
+  color: #30dafb;
+}
