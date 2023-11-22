@@ -1,9 +1,9 @@
 import { Survey } from '../models/survey';
 
 const maxAge = 120;
-const minAge = 18;
-const maxHeight = 200;
-const minHeight = 80;
+const minAge = 0;
+const maxHeight = 220;
+const minHeight = 40;
 
 const createDefaultSurvey = (id: number): Survey => ({
   age: Math.round(Math.random() * (maxAge - minAge) + minAge),
