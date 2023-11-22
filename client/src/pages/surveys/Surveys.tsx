@@ -16,8 +16,8 @@ export const Surveys = () => {
 
   return (
     <main>
-      <header>
-        <h1 className={styles.title}>Surveys</h1>
+      <header className={styles.header}>
+        <h1>Surveys</h1>
         <Button onClick={upsertSurveyModal.handleOpen}>Add survey</Button>
       </header>
 

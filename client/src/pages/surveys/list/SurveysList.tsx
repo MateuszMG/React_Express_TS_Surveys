@@ -16,8 +16,6 @@ export const SurveysList = ({
 
   return (
     <div>
-      <h1 className={styles.title}>Surveys</h1>
-
       <div className={styles.buttonWrapper}>
         <Button onClick={getSurveys}>Refresh surveys</Button>
       </div>
