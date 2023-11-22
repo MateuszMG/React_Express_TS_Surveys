@@ -3,13 +3,17 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { toast } from 'react-toastify';
+import { UseModal } from '../../../../hooks/useModal';
 
 interface useUpsertSurveyModalProps {
   editedSurvey?: Survey;
+  handleCloseModal: UseModal['handleClose'];
 }
 
 export const useUpsertSurveyModal = ({
   editedSurvey,
+  handleCloseModal,
 }: useUpsertSurveyModalProps) => {
   const {
     formState: { errors, isValid, isDirty },
@@ -22,11 +26,18 @@ export const useUpsertSurveyModal = ({
     resolver: yupResolver(upsertSurveyValidation),
   });
 
-  // TODO: add error handling
   const handleUpsert = handleSubmit((data: UpsertSurveySchema) => {
     editedSurvey
-      ? surveyApi.updateSurvey(editedSurvey.id, data)
-      : surveyApi.createSurvey(data);
+      ? surveyApi
+          .updateSurvey(editedSurvey.id, data)
+          .then(() => toast.success('Survey updated successfully'))
+          .catch(() => toast.error('Something went wrong'))
+          .finally(handleCloseModal)
+      : surveyApi
+          .createSurvey(data)
+          .then(() => toast.success('Survey created successfully'))
+          .catch(() => toast.error('Something went wrong'))
+          .finally(handleCloseModal);
 
     return data;
   });

@@ -23,7 +23,10 @@ export const UpsertSurveyModal = ({
     register,
     reset,
     setRandomColor,
-  } = useUpsertSurveyModal({ editedSurvey });
+  } = useUpsertSurveyModal({
+    editedSurvey,
+    handleCloseModal: modalData.handleClose,
+  });
 
   return (
     <Modal {...modalData}>

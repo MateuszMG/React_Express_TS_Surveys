@@ -1,4 +1,5 @@
 import { FormEvent } from 'react';
+import { toast } from 'react-toastify';
 import { surveyApi } from '../../../../api/surveysApi';
 import { Button } from '../../../../components/global/Button/Button';
 import { Form } from '../../../../components/global/Form/Form';
@@ -17,10 +18,9 @@ export const DeleteSurveyModal = ({
     event.preventDefault();
     surveyApi
       .deleteSurvey(editedSurvey.id)
-      .then(() => modalData.handleClose())
-      .catch(() => {
-        // TODO: add tost
-      });
+      .then(() => toast.success('Survey deleted successfully'))
+      .catch(() => toast.error('Something went wrong'))
+      .finally(modalData.handleClose);
   };
 
   return (

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { surveyApi } from '../../../api/surveysApi';
 
 export const useSurveysList = () => {
@@ -8,9 +9,7 @@ export const useSurveysList = () => {
     surveyApi
       .getSurveys()
       .then((res) => setSurveys(res.data.surveys || []))
-      .then((err) => {
-        // TODO: add toast
-      });
+      .catch(() => toast.error('Something went wrong'));
   };
 
   useEffect(() => {
