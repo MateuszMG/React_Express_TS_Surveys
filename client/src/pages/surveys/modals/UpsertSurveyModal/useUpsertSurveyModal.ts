@@ -11,6 +11,8 @@ interface useUpsertSurveyModalProps {
   handleCloseModal: UseModal['handleClose'];
 }
 
+const colors = ['#FF0000', '#00FF00', '#0000FF'];
+
 export const useUpsertSurveyModal = ({
   editedSurvey,
   handleCloseModal,
@@ -43,7 +45,6 @@ export const useUpsertSurveyModal = ({
   });
 
   const setRandomColor = () => {
-    const colors = ['#FF0000', '#00FF00', '#0000FF'];
     const index = Math.floor(Math.random() * colors.length);
     setValue('favouriteColor', colors[index]);
   };
