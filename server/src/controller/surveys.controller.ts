@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { surveyModel } from '../models/survey';
+import { surveyModel } from '../models/survey.model';
 
 export const surveysController = {
   get: async (req: Request, res: Response) => {
