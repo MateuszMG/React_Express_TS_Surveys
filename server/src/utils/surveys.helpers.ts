@@ -6,14 +6,15 @@ const maxHeight = 220;
 const minHeight = 40;
 const colors = ['#FF0000', '#00FF00', '#0000FF'];
 
-const createDefaultSurvey = (id: number): Survey => {
+const createDefaultSurvey = (): Survey => {
   const index = Math.floor(Math.random() * colors.length);
+  const id = Math.random().toString().slice(2, 12);
 
   return {
     age: Math.round(Math.random() * (maxAge - minAge) + minAge),
     favouriteColor: colors[index],
     hight: Math.round(Math.random() * (maxHeight - minHeight) + minHeight),
-    id: id.toString(),
+    id,
     sex: !!((Math.random() * 10) % 2) ? 'male' : 'female',
     title: `Title: ${id}`,
   };
@@ -21,4 +22,4 @@ const createDefaultSurvey = (id: number): Survey => {
 
 export const defaultSurveys = Array(6)
   .fill(0)
-  .map((_, id) => createDefaultSurvey(id));
+  .map(() => createDefaultSurvey());

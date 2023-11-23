@@ -1,10 +1,7 @@
 import { Request, Response } from 'express';
-import {
-  createSurveyValidation,
-  deleteSurveyValidation,
-  updateSurveyValidation,
-} from '../validations/survey.svalidation';
+import { upsertSurveyValidation } from '../validations/surveys.validation';
 import { surveyModel } from '../models/survey.model';
+import { idValidation } from '../validations/global.validation';
 
 export const surveysController = {
   get: async (req: Request, res: Response) => {
@@ -19,7 +16,7 @@ export const surveysController = {
 
   create: async (req: Request, res: Response) => {
     try {
-      const survey = await createSurveyValidation.validate(req.body);
+      const survey = await upsertSurveyValidation.validate(req.body);
 
       surveyModel.create(survey);
 
@@ -31,9 +28,10 @@ export const surveysController = {
 
   update: async (req: Request, res: Response) => {
     try {
-      const survey = await updateSurveyValidation.validate(req.body);
+      const survey = await upsertSurveyValidation.validate(req.body);
+      const { id } = await idValidation.validate(req.params);
 
-      surveyModel.update(survey);
+      surveyModel.update({ id, ...survey });
 
       return res.sendStatus(200);
     } catch (error) {
@@ -43,7 +41,7 @@ export const surveysController = {
 
   delete: async (req: Request, res: Response) => {
     try {
-      const { id } = await deleteSurveyValidation.validate(req.body);
+      const { id } = await idValidation.validate(req.params);
 
       surveyModel.delete(id);
 

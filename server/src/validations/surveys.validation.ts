@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const surveyValidation = {
+export const upsertSurveyValidation = yup.object({
   title: yup.string().required().min(3).max(128).label('Title'),
   age: yup.number().required().max(120).min(0).integer().label('Age'),
   hight: yup.number().required().min(40).max(220).integer().label('Hight'),
@@ -15,17 +15,4 @@ const surveyValidation = {
     .lowercase()
     .oneOf(['male', 'female'])
     .label('Sex'),
-};
-
-export const createSurveyValidation = yup.object({
-  ...surveyValidation,
-});
-
-export const updateSurveyValidation = yup.object({
-  id: yup.string().required().min(3).max(40).label('Id'),
-  ...surveyValidation,
-});
-
-export const deleteSurveyValidation = yup.object({
-  id: yup.string().required().min(3).max(40).label('Id'),
 });
