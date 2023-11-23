@@ -1,4 +1,4 @@
-import { Survey } from '../models/survey';
+import { Survey } from '../models/survey.model';
 
 const maxAge = 120;
 const minAge = 0;

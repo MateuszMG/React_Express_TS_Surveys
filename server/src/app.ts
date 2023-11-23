@@ -2,7 +2,7 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { surveysRouter } from './routes/survey';
+import { surveysRouter } from './routes/survey.routes';
 
 const app = express();
 
