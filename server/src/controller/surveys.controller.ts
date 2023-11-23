@@ -4,7 +4,7 @@ import { surveyModel } from '../models/survey.model';
 import { idValidation } from '../validations/global.validation';
 
 export const surveysController = {
-  get: async (req: Request, res: Response) => {
+  getSurveys: async (req: Request, res: Response) => {
     try {
       const surveys = surveyModel.get();
 
@@ -14,7 +14,7 @@ export const surveysController = {
     }
   },
 
-  create: async (req: Request, res: Response) => {
+  createSurvey: async (req: Request, res: Response) => {
     try {
       const survey = await upsertSurveyValidation.validate(req.body);
 
@@ -26,7 +26,7 @@ export const surveysController = {
     }
   },
 
-  update: async (req: Request, res: Response) => {
+  updateSurvey: async (req: Request, res: Response) => {
     try {
       const survey = await upsertSurveyValidation.validate(req.body);
       const { id } = await idValidation.validate(req.params);
@@ -39,7 +39,7 @@ export const surveysController = {
     }
   },
 
-  delete: async (req: Request, res: Response) => {
+  deleteSurvey: async (req: Request, res: Response) => {
     try {
       const { id } = await idValidation.validate(req.params);
 
