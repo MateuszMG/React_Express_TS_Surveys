@@ -3,7 +3,7 @@ import {
   createSurveyValidation,
   deleteSurveyValidation,
   updateSurveyValidation,
-} from '../validations/survey.validation';
+} from '../validations/survey.svalidation';
 import { surveyModel } from '../models/survey.model';
 
 export const surveysController = {
