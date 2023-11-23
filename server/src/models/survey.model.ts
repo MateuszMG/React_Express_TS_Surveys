@@ -1,4 +1,4 @@
-import { defaultSurveys } from '../utils/defaultSurveys';
+import { defaultSurveys } from '../utils/surveys.helpers';
 
 export interface Survey {
   age: number;
